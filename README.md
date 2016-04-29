@@ -7,9 +7,18 @@
 ```
 sudo -i
 cd /bin/
-wget http://oss-shanghai.rainman.me/kyeremal/translate
+wget http://oss-shanghai.rainman.me/kyeremal/tl
 chmod 777 translate
 ```
 Enjoy it🍻   
 ***
 在 os x 10.11 下会有 rootless 导致 /bin 目录下无权限的问题，可以在开机时按住 command + R，实用工具->终端，输入 csrutil disable; reboot 禁用 rootless~
+***
+## update
+经千橙建议~将命令名称由 translate 改为 tl。
+
+## tips
+修改 /bin 目录下的脚本文件名将修改命令名称，如：
+```
+sudo mv /bin/tl /bin/fanyi
+```
