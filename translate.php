@@ -3,8 +3,7 @@
     function lang($str) {
         return $str;
     }
-
-//    $word = trim('-t zh-cn time off');
+    
     $mode = "";
     $from = "auto";
     $to = "en";
