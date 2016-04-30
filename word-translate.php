@@ -1,7 +1,4 @@
 <?php
-//    $word = $_GET['word'];
-//    $word = 'time';
-
     function get_response($word) {
         $youdao_url = "http://fanyi.youdao.com/openapi.do?keyfrom=rainman&key=973586758&type=data&doctype=json&version=1.1&q=".$word;
         $json = file_get_contents($youdao_url);
