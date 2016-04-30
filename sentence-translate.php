@@ -1,24 +1,8 @@
 <?php
-/***************************************************************************
-
- * Copyright (c) 2015 Baidu.com, Inc. All Rights Reserved
- * 
-**************************************************************************/
-
-
-
-/**
- * @file baidu_transapi.php 
- * @author mouyantao(mouyantao@baidu.com)
- * @date 2015/06/23 14:32:18
- * @brief 
- *  
- **/
-
 define("CURL_TIMEOUT",   10); 
 define("URL",            "http://api.fanyi.baidu.com/api/trans/vip/translate"); 
-define("APP_ID",         "20160328000016764"); //替换为您的APPID
-define("SEC_KEY",        "GKFm0tMEIXHS6FaVsySn");//替换为您的密钥
+define("APP_ID",         "20160328000016764");
+define("SEC_KEY",        "GKFm0tMEIXHS6FaVsySn");
 
 //翻译入口
 function translate($query, $from, $to)
@@ -37,17 +21,13 @@ function translate($query, $from, $to)
     return $ret; 
 }
 
-//加密
-function buildSign($query, $appID, $salt, $secKey)
-{/*{{{*/
+function buildSign($query, $appID, $salt, $secKey) {
     $str = $appID . $query . $salt . $secKey;
     $ret = md5($str);
     return $ret;
-}/*}}}*/
+}
 
-//发起网络请求
-function call($url, $args=null, $method="post", $testflag = 0, $timeout = CURL_TIMEOUT, $headers=array())
-{/*{{{*/
+function call($url, $args=null, $method="post", $testflag = 0, $timeout = CURL_TIMEOUT, $headers=array()) {
     $ret = false;
     $i = 0; 
     while($ret === false) 
@@ -62,28 +42,22 @@ function call($url, $args=null, $method="post", $testflag = 0, $timeout = CURL_T
         $i++;
     }
     return $ret;
-}/*}}}*/
+}
 
-function callOnce($url, $args=null, $method="post", $withCookie = false, $timeout = CURL_TIMEOUT, $headers=array())
-{/*{{{*/
+function callOnce($url, $args=null, $method="post", $withCookie = false, $timeout = CURL_TIMEOUT, $headers=array()) {
     $ch = curl_init();
-    if($method == "post") 
-    {
+    if($method == "post") {
         $data = convert($args);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_POST, 1);
     }
-    else 
-    {
+    else {
         $data = convert($args);
-        if($data) 
-        {
-            if(stripos($url, "?") > 0) 
-            {
+        if($data) {
+            if(stripos($url, "?") > 0) {
                 $url .= "&$data";
             }
-            else 
-            {
+            else {
                 $url .= "?$data";
             }
         }
@@ -91,44 +65,35 @@ function callOnce($url, $args=null, $method="post", $withCookie = false, $timeou
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    if(!empty($headers)) 
-    {
+    if(!empty($headers)) {
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     }
-    if($withCookie)
-    {
+    if($withCookie) {
         curl_setopt($ch, CURLOPT_COOKIEJAR, $_COOKIE);
     }
     $r = curl_exec($ch);
     curl_close($ch);
     return $r;
-}/*}}}*/
+}
 
-function convert(&$args)
-{/*{{{*/
+function convert(&$args) {
     $data = '';
-    if (is_array($args))
-    {
-        foreach ($args as $key=>$val)
-        {
-            if (is_array($val))
-            {
-                foreach ($val as $k=>$v)
-                {
+    if (is_array($args)) {
+        foreach ($args as $key=>$val) {
+            if (is_array($val)) {
+                foreach ($val as $k=>$v) {
                     $data .= $key.'['.$k.']='.rawurlencode($v).'&';
                 }
             }
-            else
-            {
+            else {
                 $data .="$key=".rawurlencode($val)."&";
             }
         }
         return trim($data, "&");
     }
     return $args;
-}/*}}}*/
+}
 
 $result = translate($word, $from, $to);
-//print_r($result);
 echo "\n    " . $result['trans_result'][0]['dst'] . "\n\n";
 ?>
