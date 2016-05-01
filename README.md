@@ -22,13 +22,10 @@
 <h2 name="1">使用</h2>
 <h3 name="1.1">安装</h3>
 ```
-sudo -i
-cd /bin/
-wget http://oss-shanghai.rainman.me/kyeremal/tl
-chmod 777 tl
-sudo mv tl [filename] #[filename] is any name u want
+sudo wget -P /usr/local/bin http://oss-shanghai.rainman.me/kyeremal/tl
+sudo chmod u+x /usr/local/bin/tl
+sudo mv /usr/local/bin/tl /usr/local/bin/[filename] #[filename] is any name u want
 ```
-在 os x 10.11 下会有 rootless 导致 /bin 目录下无权限的问题，可以在开机时按住 command + R，实用工具->终端，输入 csrutil disable; reboot 禁用 rootless~
 <h3 name="1.2">参数</h3>
 | 参数        | 可选           | 可选  | 默认值 |
 |:------------- |:-------------|:-----|:-----|
