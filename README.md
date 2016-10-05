@@ -14,10 +14,10 @@
 <h3 name="0.1">单词翻译</h3>
 当看到一个生词时，不再需要复制进翻译软件，而是直接在命令行中获得中文翻译！  
 使用 [YouDao API](http://fanyi.youdao.com/openapi?path=data-mode) 制作的一个命令行查词脚本。
-[![829X.png](http://cdn.image.rainman.me/images/829X.png)](http://image.rainman.me/image/829X)
+[![829X.png](http://cdn.image.rainman.me/images/829X.png)](http://cdn.image.rainman.me/images/829X.png)
 <h3 name="0.2">整句翻译</h3>
 新增整句翻译功能，使用 [Baidu Translate API](http://api.fanyi.baidu.com/api/trans/product/index)  
-[![3g6K.png](http://cdn.image.rainman.me/images/3g6K.png)](http://image.rainman.me/image/3g6K)
+[![3g6K.png](http://cdn.image.rainman.me/images/3g6K.png)](http://cdn.image.rainman.me/images/3g6K.png)
 
 <h2 name="1">使用</h2>
 <h3 name="1.1">安装</h3>
